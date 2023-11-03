@@ -1,6 +1,9 @@
 import { Nunito } from 'next/font/google'
  
 import './globals.css'
+import Navbar from './Components/Navbar/Navbar';
+import ClientOnly from './Components/ClientOnly';
+import Modal from './Components/Modals/Modal';
 
 export const metadata = {
   title: 'Docknow',
@@ -18,7 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <ClientOnly>
+          <Modal title={"Hello world"} isOpen/>
+          <Navbar />
+        </ClientOnly>
+        
+        {children}
+      </body>
     </html>
   )
 }
